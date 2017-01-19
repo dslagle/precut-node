@@ -9,8 +9,7 @@ const alexa_route_1 = require("./routes/alexa.route");
 let app = express();
 let server = http.createServer(app);
 const io = sio(server);
-const address = "localhost";
-const port = 9000;
+const port = 80;
 // const options = {
 //     key: fs.readFileSync("server.key"),
 //     cert: fs.readFileSync("server.crt")
@@ -25,7 +24,5 @@ app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
 app.use("/tasks", task_route_1.default);
 app.use("/alexa", alexa_route_1.default(io));
-server.listen(port, address, () => {
-    console.log(`Listening @ ${address}:${port}`);
-});
+server.listen(port);
 //# sourceMappingURL=server.js.map

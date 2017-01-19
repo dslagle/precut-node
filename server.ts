@@ -13,8 +13,7 @@ let app = express();
 let server = http.createServer(app);
 const io = sio(server);
 
-const address: string = "localhost";
-const port: number = 9000;
+const port: number = 80;
 
 // const options = {
 //     key: fs.readFileSync("server.key"),
@@ -34,6 +33,4 @@ app.use(bp.json());
 app.use("/tasks", taskRouter);
 app.use("/alexa", alexaRouter(io));
 
-server.listen(port, address, () => {
-    console.log(`Listening @ ${address}:${port}`);
-});
+server.listen(port);
